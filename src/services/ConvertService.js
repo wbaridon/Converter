@@ -1,11 +1,10 @@
 import Api from '@/services/Api'
 
 export default {
-    getValue (from, to, amount) {
-        return Api().get(`/convert?
-        access_key=${process.env.VUE_APP_CURRENCY_API_KEY}&from=${from}&to=${to}&amount=${amount}`)
+    getValue (from, to) {
+        return Api().get(`latest?base=${from}&symbols=${to}`)
         .then(res => {
             return (res.data)
-        })
+        }).catch(err => { console.log('Api is down') })
     }
 }

@@ -2,6 +2,6 @@ import axios from 'axios'
 
 export default() => {
     return axios.create({
-        baseURL: `http://apilayer.net/api/`
+        baseURL: `https://ratesapi.io/api/`
     })
 }

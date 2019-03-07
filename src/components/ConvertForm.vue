@@ -24,18 +24,18 @@ export default {
     return {
       amount: '',
       convertAmount: '',
-      firstSelect: 'eur',
-      secondSelect: 'usd',
+      firstSelect: 'EUR',
+      secondSelect: 'USD',
       currency: [
-        { text: 'EUR', value: 'eur' },
-        { text: 'USD', value: 'usd' },
+        { text: 'EUR', value: 'EUR' },
+        { text: 'USD', value: 'USD' },
       ]
     }
   },
   methods: {
     launch () {
-      Convert.getValue(this.firstSelect, this.secondSelect, this.amount, callback => {
-        /* En fonction des datas remplacer les valeurs */ 
+      Convert.getValue(this.firstSelect, this.secondSelect).then(res => {
+        this.convertAmount = Math.round((res.rates[this.secondSelect] * this.amount)*100)/100
       })
     },
     invert () {
